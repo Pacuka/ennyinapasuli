@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ennyi Nap a Suli — Tanév Visszaszámláló</title>
+
+  <meta
+    name="description"
+    content="Élő visszaszámláló arra, hogy hány nap van hátra a 2026/2027-es tanévből. Kattints ✨ vagy gépeld be: 67."
+  >
+  <meta name="theme-color" content="#0f0c29">
+
+  <link rel="canonical" href="https://ennyinapasuli.hu/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ennyi Nap a Suli — Tanév Visszaszámláló">
+  <meta
+    property="og:description"
+    content="Hány nap van még hátra a suliból? Nézd meg élőben, aztán gépeld be: 67 👀"
+  >
+  <meta property="og:url" content="https://ennyinapasuli.hu/">
+  <meta property="og:locale" content="hu_HU">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ennyi Nap a Suli">
+  <meta
+    name="twitter:description"
+    content="Élő tanév-visszaszámláló. Van benne easter egg is 👀"
+  >
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎒</text></svg>"
+  >
+
+  <style>
+    :root {
+      --bg1: #0f0c29;
+      --bg2: #302b63;
+      --bg3: #24243e;
+
+      --accent: #ffd166;
+      --blue: #7fdbff;
+      --red: #ff6b6b;
+
+      --text: #f5f5f5;
+      --muted: rgba(255, 255, 255, 0.55);
+
+      --card: rgba(255, 255, 255, 0.055);
+      --card-border: rgba(255, 255, 255, 0.13);
+
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 18px 28px;
+
+      min-height: 100vh;
+
+      font-family:
+        Inter,
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+
+      color: var(--text);
+      text-align: center;
+
+      background:
+        linear-gradient(
+          -45deg,
+          var(--bg1),
+          var(--bg2),
+          var(--bg3),
+          #1a1a2e
+        );
+
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    body::selection {
+      background: var(--accent);
+      color: #1a1a2e;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* =====================================================
+       CONTENT
+    ===================================================== */
+
+    .content {
+      position: relative;
+      z-index: 5;
+
+      width: min(100%, 1040px);
+
+      margin: 0 auto;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    h1 {
+      margin: 4px 0 0;
+
+      max-width: 760px;
+
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      line-height: 1.25;
+
+      font-weight: 500;
+
+      opacity: 0.82;
+    }
+
+    .number {
+      margin: 12px 0 4px;
+
+      font-size: clamp(5rem, 22vw, 10rem);
+      line-height: 0.9;
+
+      font-weight: 950;
+
+      color: var(--accent);
+
+      text-shadow:
+        0 0 20px rgba(255, 209, 102, 0.22),
+        0 0 55px rgba(255, 209, 102, 0.12);
+
+      font-variant-numeric: tabular-nums;
+
+      min-width: 3ch;
+
+      animation: pulse 3s ease-in-out infinite;
+
+      letter-spacing: -0.07em;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.018);
+      }
+    }
+
+    .label {
+      margin-top: 6px;
+
+      font-size: clamp(1.05rem, 3.5vw, 1.45rem);
+
+      font-weight: 600;
+
+      opacity: 0.84;
+    }
+
+    .emoji {
+      min-height: 1.4em;
+
+      margin-top: 12px;
+
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    .sub {
+      width: min(100%, 650px);
+
+      margin-top: 22px;
+
+      padding: 0 8px;
+
+      font-size: 0.88rem;
+      line-height: 1.55;
+
+      opacity: 0.48;
+    }
+
+    /* =====================================================
+       CHAOS MODE
+    ===================================================== */
+
+    .chaos-only {
+      display: none;
+    }
+
+    body.chaos-active .chaos-only {
+      display: block;
+    }
+
+    /*
+      FONTOS:
+      Az .info-row flex/grid layoutját nem szabad
+      display:block-kal felülírni Chaos Mode-ban.
+    */
+
+    body.chaos-active .info-row.chaos-only {
+      display: grid;
+    }
+
+    body.chaos-active .number {
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    body.chaos-active .sub {
+      opacity: 0.5;
+    }
+
+    .brainrot {
+      width: min(100%, 760px);
+
+      min-height: 1.6em;
+
+      margin-top: 16px;
+
+      color: var(--accent);
+
+      font-size: clamp(0.9rem, 3vw, 1.15rem);
+      line-height: 1.4;
+
+      font-weight: 800;
+
+      letter-spacing: 0.2px;
+
+      opacity: 0.92;
+    }
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .actions {
+      width: 100%;
+      max-width: 650px;
+
+      margin-top: 20px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .action-btn,
+    .krecs-btn {
+      appearance: none;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 40px;
+
+      padding: 9px 17px;
+
+      border: 0;
+      border-radius: 999px;
+
+      background: var(--accent);
+      color: #1a1a2e;
+
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 850;
+
+      line-height: 1;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.15s ease,
+        filter 0.15s ease,
+        opacity 0.15s ease;
+    }
+
+    .action-btn:hover,
+    .krecs-btn:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .action-btn:active,
+    .krecs-btn:active {
+      transform: scale(0.95);
+    }
+
+    .action-btn.blue {
+      background: var(--blue);
+    }
+
+    .action-btn.dark {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* =====================================================
+       AURA
+    ===================================================== */
+
+    .aura-box {
+      width: min(100%, 440px);
+
+      min-height: 76px;
+
+      margin-top: 22px;
+      padding: 13px 18px;
+
+      border-radius: var(--radius);
+
+      background: rgba(127, 219, 255, 0.065);
+
+      border: 1px solid rgba(127, 219, 255, 0.24);
+
+      font-size: clamp(0.85rem, 2.8vw, 1rem);
+
+      font-variant-numeric: tabular-nums;
+    }
+
+    .aura-score {
+      color: var(--blue);
+
+      font-size: 1.2em;
+      font-weight: 950;
+
+      font-variant-numeric: tabular-nums;
+    }
+
+    .aura-label {
+      min-height: 1.2em;
+
+      margin-top: 3px;
+
+      font-size: 0.75rem;
+
+      line-height: 1.4;
+
+      opacity: 0.6;
+    }
+
+    /* =====================================================
+       ÉRETTSÉGI
+    ===================================================== */
+
+    .erettsegi-box {
+      width: min(100%, 500px);
+
+      min-height: 100px;
+
+      margin-top: 18px;
+      padding: 15px 20px;
+
+      border-radius: var(--radius);
+
+      background: rgba(255, 107, 107, 0.065);
+
+      border: 1px solid rgba(255, 107, 107, 0.24);
+
+      font-size: clamp(0.85rem, 2.8vw, 1rem);
+
+      line-height: 1.45;
+    }
+
+    .erettsegi-title {
+      display: block;
+
+      margin-bottom: 4px;
+
+      color: var(--red);
+
+      font-weight: 900;
+    }
+
+    .erettsegi-days {
+      display: block;
+
+      margin-top: 5px;
+
+      color: var(--accent);
+
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-weight: 950;
+
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* =====================================================
+       CHAOS INFO CARDS
+    ===================================================== */
+
+    .info-row {
+      width: 100%;
+
+      margin-top: 22px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 16px;
+
+      align-items: stretch;
+    }
+
+    .krecs,
+    .igazsag {
+      width: 100%;
+      min-width: 0;
+
+      min-height: 160px;
+
+      padding: 18px 20px;
+
+      border-radius: var(--radius);
+
+      font-size: clamp(0.85rem, 2.8vw, 1rem);
+      line-height: 1.5;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .krecs {
+      background: rgba(255, 255, 255, 0.055);
+
+      border: 1px solid rgba(255, 209, 102, 0.24);
+    }
+
+    .krecs-title {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--red);
+
+      font-weight: 950;
+    }
+
+    .igazsag {
+      background: rgba(255, 209, 102, 0.065);
+
+      border: 1px solid rgba(255, 255, 255, 0.14);
+
+      font-style: italic;
+    }
+
+    .igazsag-title {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--blue);
+
+      font-weight: 950;
+
+      font-style: normal;
+    }
+
+    .krecs .krecs-btn,
+    .igazsag .krecs-btn {
+      align-self: center;
+
+      margin-top: 13px;
+    }
+
+    /* =====================================================
+       VISIT COUNTER
+    ===================================================== */
+
+    .visit-counter {
+      min-height: 1.2em;
+
+      margin-top: 16px;
+
+      font-size: 0.75rem;
+
+      line-height: 1.4;
+
+      opacity: 0.4;
+    }
+
+    /* =====================================================
+       SECRET BUTTON
+    ===================================================== */
+
+    .secret-btn {
+      position: fixed;
+
+      right: 13px;
+      bottom: 12px;
+
+      z-index: 50;
+
+      padding: 7px;
+
+      background: none;
+
+      border: 0;
+
+      font-size: 1.1rem;
+
+      opacity: 0.15;
+
+      cursor: pointer;
+
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .secret-btn:hover {
+      opacity: 0.65;
+
+      transform:
+        rotate(15deg)
+        scale(1.15);
+    }
+
+    /* =====================================================
+       FLOATERS
+    ===================================================== */
+
+    .floater {
+      position: fixed;
+
+      left: 0;
+
+      z-index: 0;
+
+      color: rgba(255, 255, 255, 0.07);
+
+      font-weight: 950;
+
+      pointer-events: none;
+      user-select: none;
+
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform:
+          translateY(110vh)
+          rotate(0deg);
+      }
+
+      100% {
+        transform:
+          translateY(-20vh)
+          rotate(360deg);
+      }
+    }
+
+    .sixty-seven-pop {
+      position: fixed;
+
+      z-index: 20;
+
+      color: var(--accent);
+
+      font-size: 3rem;
+      font-weight: 950;
+
+      pointer-events: none;
+
+      animation: popFade 1.2s ease-out forwards;
+    }
+
+    @keyframes popFade {
+      0% {
+        transform:
+          scale(0.3)
+          rotate(-10deg);
+
+        opacity: 1;
+      }
+
+      60% {
+        transform:
+          scale(1.3)
+          rotate(5deg);
+
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          scale(1)
+          translateY(-60px)
+          rotate(0deg);
+
+        opacity: 0;
+      }
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      position: relative;
+
+      z-index: 5;
+
+      width: 100%;
+
+      margin-top: 30px;
+      padding-top: 4px;
+
+      font-size: 0.72rem;
+      line-height: 1.5;
+
+      opacity: 0.32;
+    }
+
+    footer a {
+      color: inherit;
+
+      font-weight: 750;
+
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      opacity: 1;
+
+      text-decoration: underline;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 760px) {
+      body {
+        padding:
+          20px
+          14px
+          24px;
+      }
+
+      .content {
+        width: 100%;
+      }
+
+      .number {
+        font-size: clamp(5rem, 27vw, 8rem);
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+      }
+
+      .krecs,
+      .igazsag {
+        min-height: 145px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding-top: 18px;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      .number {
+        margin-top: 15px;
+      }
+
+      .sub {
+        margin-top: 19px;
+
+        font-size: 0.82rem;
+      }
+
+      .actions {
+        flex-direction: column;
+
+        width: min(100%, 330px);
+      }
+
+      .action-btn {
+        width: 100%;
+      }
+
+      .erettsegi-box,
+      .aura-box {
+        width: 100%;
+      }
+
+      .info-row {
+        gap: 12px;
+      }
+
+      .krecs,
+      .igazsag {
+        padding:
+          16px
+          15px;
+      }
+
+      footer {
+        padding:
+          0
+          25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="floaters"></div>
+
+  <main class="content">
+
+    <!-- ================= HERO ================= -->
+
+    <h1 id="pretext">
+      Még ennyi nap van hátra a suliból:
+    </h1>
+
+    <div class="number" id="days">--</div>
+
+    <div class="label" id="posttext">
+      nap
+    </div>
+
+    <div class="emoji" id="emoji"></div>
+
+    <!-- ================= CHAOS TEXT ================= -->
+
+    <div
+      class="brainrot chaos-only"
+      id="brainrot"
+    ></div>
+
+    <!-- ================= INFO ================= -->
+
+    <div class="sub">
+      📅 A számláló a 2026. szeptember 1-től 2027. június 18-ig tartó
+      tanévet számolja (a beállított tanévzárási dátum alapján).
+      <br>
+      A pontos érték attól függhet, hogy melyik évfolyamon és
+      iskolatípusban jársz.
+    </div>
+
+    <!-- ================= ÉRETTSÉGI ================= -->
+
+    <section class="erettsegi-box">
+      <span class="erettsegi-title">
+        🎓 Következő érettségi
+      </span>
+
+      <span id="erettsegiName">
+        betöltés...
+      </span>
+
+      <span
+        class="erettsegi-days"
+        id="erettsegiCountdown"
+      >
+        --
+      </span>
+    </section>
+
+    <!-- ================= ACTIONS ================= -->
+
+    <div class="actions">
+
+      <button
+        class="action-btn"
+        id="shareBtn"
+        onclick="shareSite()"
+      >
+        📤 Megosztás
+      </button>
+
+      <button
+        class="action-btn blue"
+        id="imgBtn"
+        onclick="generateShareImage()"
+      >
+        📸 Sztori kép mentése
+      </button>
+
+      <a
+        href="https://eugyintezes.e-kreta.hu/kezdolap"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="action-btn blue"
+      >
+        🔑 e-Kréta
+      </a>
+
+    </div>
+
+    <!-- ================= AURA ================= -->
+
+    <section class="aura-box">
+      <div id="auraScoreText">
+        <span class="aura-score">0</span>
+        aura
+      </div>
+
+      <div
+        class="aura-label"
+        id="auraLabel"
+      >
+        még csak most kezdted nézegetni...
+      </div>
+    </section>
+
+    <!-- ================= VISIT ================= -->
+
+    <div
+      class="visit-counter"
+      id="visitCounter"
+    ></div>
+
+    <!-- ================= CHAOS CARDS ================= -->
+
+    <section class="info-row chaos-only">
+
+      <article class="krecs">
+
+        <span class="krecs-title">
+          🚨 e-Kréta állapotjelentés 🚨
+        </span>
+
+        <span id="krecsText">
+          betöltés... ⏳
+        </span>
+
+        <button
+          class="krecs-btn"
+          onclick="rerollKreta()"
+        >
+          🔄 Új panasz
+        </button>
+
+      </article>
+
+      <article class="igazsag">
+
+        <span class="igazsag-title">
+          🧠 Örök sulis igazságok 🧠
+        </span>
+
+        <span id="igazsagText">
+          betöltés... ⏳
+        </span>
+
+        <button
+          class="krecs-btn"
+          onclick="rerollIgazsag()"
+        >
+          🔄 Új igazság
+        </button>
+
+      </article>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+      ennyinapasuli.hu
+      &middot;
+      Made by
+      <a
+        href="https://github.com/Pacuka"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Pacuka
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- ================= SECRET ================= -->
+
+  <button
+    class="secret-btn"
+    onclick="toggleChaos()"
+    title="psst... próbáld begépelni: 67"
+    aria-label="Titkos mód"
+  >
+    ✨
+  </button>
+
+  <script>
+    // =====================================================
+    // TANÉV VISSZASZÁMLÁLÓ
+    // =====================================================
+
+    const schoolEnd = new Date("2027-06-19T00:00:00");
+
+    const now = new Date();
+
+    const msPerDay =
+      1000 *
+      60 *
+      60 *
+      24;
+
+    const diffDays =
+      Math.ceil(
+        (schoolEnd - now) /
+        msPerDay
+      );
+
+    const daysEl =
+      document.getElementById("days");
+
+    const preEl =
+      document.getElementById("pretext");
+
+    const postEl =
+      document.getElementById("posttext");
+
+    const emojiEl =
+      document.getElementById("emoji");
+
+
+    if (diffDays > 0) {
+
+      daysEl.textContent = diffDays;
+
+      postEl.textContent = "nap";
+
+      emojiEl.textContent =
+        diffDays <= 7
+          ? "🎉"
+          : diffDays <= 30
+            ? "📚"
+            : "⏳";
+
+    } else if (diffDays === 0) {
+
+      preEl.textContent =
+        "Ma van az utolsó nap!";
+
+      daysEl.textContent = "🎓";
+
+      postEl.textContent =
+        "Szabadság!";
+
+      emojiEl.textContent = "🥳";
+
+    } else {
+
+      preEl.textContent =
+        "A tanév már véget ért, élvezd a szünetet:";
+
+      daysEl.textContent =
+        Math.abs(diffDays);
+
+      postEl.textContent =
+        "napja";
+
+      emojiEl.textContent = "🏖️";
+    }
+
+
+    // =====================================================
+    // CHAOS MODE
+    // =====================================================
+
+    let chaosActive = false;
+
+    let floaterInterval = null;
+    let brainrotInterval = null;
+    let kretaInterval = null;
+    let igazsagInterval = null;
+
+
+    function toggleChaos() {
+
+      chaosActive =
+        !chaosActive;
+
+      document.body.classList.toggle(
+        "chaos-active",
+        chaosActive
+      );
+
+      if (chaosActive) {
+        startChaos();
+      } else {
+        stopChaos();
+      }
+    }
+
+
+    // =====================================================
+    // BRAINROT
+    // =====================================================
+
+    const brainrotPhrases = [
+
+      "6️⃣7️⃣... 6️⃣7️⃣... 💀",
+
+      "skibidi tanóra, rizz ellenőrzés 🚽🔥",
+
+      "csak egy sigma diák vagyok, semmi extra 🗿",
+
+      "gyatt szintű házi feladat, nulla aura 📉",
+
+      "fanum tax: a padtársad megint elkérte a tolladat 💸",
+
+      "mewing közben bejelentik a matekdolgozatot 😬📐",
+
+      "ohio szintű igazgatói intő 🌽💀",
+
+      "a tanár főz, mi pedig megesszük a dolgozatot 👨‍🍳🔥",
+
+      "67% esély van rá, hogy ezt a témazárót elrontom 💀📊",
+
+      "no cap, ezt az órát már csak a csengő mentheti meg 🧢🔔",
+
+      "rizzlord leszel, de a csengő előbb megszólal 🔔👑",
+
+      "az e-Kréta megint úgy döntött, hogy ma nem működik 💀🌐",
+
+      "aura: -9000. Elaludtam órán. 😴📉",
+
+      "a tanterem tele van NPC-kkel 🤖",
+
+      "Grimace Shake szintű hangulat a matekórán 🟣😵"
+    ];
+
+
+    const brainrotEl =
+      document.getElementById("brainrot");
+
+    let brainrotIndex = 0;
+
+
+    function cycleBrainrot() {
+
+      brainrotEl.textContent =
+        brainrotPhrases[
+          brainrotIndex %
+          brainrotPhrases.length
+        ];
+
+      brainrotIndex++;
+    }
+
+
+    // =====================================================
+    // E-KRÉTA
+    // =====================================================
+
+    const kretaComplaints = [
+
+      "🐌 Betöltés... már 47 másodperce nézem a forgó karikát.",
+
+      "📵 Az értesítés természetesen akkor jön meg, amikor már három napja nem érdekel.",
+
+      "🔄 Kijelentkeztet, pont amikor végre meg akarnád nézni a jegyedet.",
+
+      "🧾 Egyetlen hiányzáshoz is kell vagy hat kattintás. Speedrun any%.",
+
+      "💀 „Váratlan hiba történt.” — Jó reggelt, e-Kréta!",
+
+      "📉 A kinézet alig változott, de a hibák legalább fejlődnek.",
+
+      "🌐 Karbantartás. Megint. Természetesen pont akkor, amikor kellene.",
+
+      "🐢 Gyorsabb besétálni az iskolába, mint megvárni, amíg betölt az órarend.",
+
+      "🔐 Elfelejtett jelszó → új jelszó → öt perc múlva megint elfelejtve.",
+
+      "📲 A mobilapp ugyanaz, csak kisebb képernyőn szenvedsz vele.",
+
+      "🧟 Zombiszerver: néha működik, de csak akkor, amikor senkinek nem kell.",
+
+      "🎢 Egy sima jegybeírásból is képes három különböző hibaüzenetet gyártani."
+    ];
+
+
+    const krecsTextEl =
+      document.getElementById("krecsText");
+
+
+    function rerollKreta() {
+
+      krecsTextEl.textContent =
+        kretaComplaints[
+          Math.floor(
+            Math.random() *
+            kretaComplaints.length
+          )
+        ];
+    }
+
+
+    // =====================================================
+    // ÖRÖK SULIS IGAZSÁGOK
+    // =====================================================
+
+    const igazsagok = [
+
+      "Az 1-es is egy jegy. Nem szép, de legalább őszinte. 🧐1️⃣",
+
+      "A 2-es nem rossz jegy. Csak... hát... lehetett volna jobb. 💯2️⃣",
+
+      "A 3-as az igazi arany középút: nem bukás, nem dicsekvés. ⚖️3️⃣",
+
+      "A 4-es a „tudtam volna én ötöst is” jegy. Persze. 🤡4️⃣",
+
+      "Az 5-ös? Biztos szerencse. A 3-as viszont már komoly szakértelem. 🎲5️⃣",
+
+      "Ha az 1-es be van karikázva, az már művészi kivitelezés. 🎨1️⃣",
+
+      "A „nem tanultam” valahogy mindig hihetőbb, mint a „tanultam, csak elfelejtettem”. 📚❌",
+
+      "Az igazgatói intő igazából egy gyűjtői darab. Csak még senki nem meri kiállítani. 🖼️📜",
+
+      "Ha a tanár azt mondja, „csend legyen”, onnantól garantáltan nagyobb lesz a zaj. 🔊🤫",
+
+      "A becsengetés utáni első két perc hivatalosan még bemelegítés. ⏰🏃",
+
+      "Ha valaki azt mondja, „nyugi, könnyű lesz a dolgozat”, kezdj el aggódni. 🏃💨📝",
+
+      "A pad alatti telefonozás olimpiai sport, csak még nem került be a programba. 📱🥇",
+
+      "A csengő mindig akkor szólal meg, amikor végre történik valami érdekes. 🔔😤",
+
+      "Ha a tanár kimegy öt percre, az nem szünet. De azért mindenki úgy kezeli. 🚪🎉",
+
+      "A leckefüzet a suli Bermuda-háromszöge: valahogy mindig eltűnik, amikor kéne. 📓👻",
+
+      "A „felkészültem, csak izgulok” mindig akkor hangzik el, amikor nulla lapot írtál tele. 😅📄",
+
+      "Ha valaki elsőre jelentkezik felelni, az vagy zseni, vagy már úgyis tudja a jegyét. 🙋‍♂️🎯",
+
+      "A tanterem hőmérséklete csak két állapotot ismer: jegesmedve-hideg vagy szaunameleg. 🥶🥵",
+
+      "A csoportmunka valójában azt jelenti, hogy egy ember dolgozik, négyen nézik. 👥🛋️",
+
+      "A „holnapra megtanulom” mondat sikeraránya történelmileg 0% körül mozog. 📆❌",
+
+      "Ha a tanár mosolyogva jön be, az garantáltan dolgozatot jelent. 😊📝",
+
+      "A szünetben mindig pont annyi idő van, hogy elkezdj valamit, aztán abba kelljen hagyni. ⏱️😩",
+
+      "Ha nem tudod a választ, mondj valamit magabiztosan — 30% eséllyel bejön. 🎯🗣️",
+
+      "A tesi óra elején mindenki sportos, a végén mindenki halott. 🏃‍♂️💀",
+
+      "A padtárs jegyzete mindig olvashatatlanabb, mint a sajátod, de valahogy mégis abból tanulsz. 📓🤨",
+
+      "Ha az órarendben lyuk van, az nem szabadidő — az sors ajándéka. 🎁🕳️",
+
+      "A suli wifije pont akkor esik ki, amikor beadnád a házit. 📶💀",
+
+      "Ha három ember ül egy padban, az már hivatalosan közösségi tér. 🛋️👨‍👩‍👦",
+
+      "A becsengetés előtti utolsó másodperc mindig a leghosszabb az életedben. ⏳😰"
+    ];
+
+
+    const igazsagTextEl =
+      document.getElementById("igazsagText");
+
+
+    function rerollIgazsag() {
+
+      igazsagTextEl.textContent =
+        igazsagok[
+          Math.floor(
+            Math.random() *
+            igazsagok.length
+          )
+        ];
+    }
+
+
+    // =====================================================
+    // FLOATERS
+    // =====================================================
+
+    const floatersContainer =
+      document.getElementById("floaters");
+
+
+    const extraWords = [
+      "skibidi",
+      "rizz",
+      "gyatt",
+      "sigma",
+      "ohio",
+      "no cap",
+      "mewing",
+      "fanum tax",
+      "aura"
+    ];
+
+
+    function spawnFloater() {
+
+      const el =
+        document.createElement("div");
+
+      el.className = "floater";
+
+      el.textContent =
+        Math.random() < 0.5
+          ? "67"
+          : extraWords[
+              Math.floor(
+                Math.random() *
+                extraWords.length
+              )
+            ];
+
+      el.style.left =
+        Math.random() * 100 + "vw";
+
+      el.style.fontSize =
+        2 +
+        Math.random() * 4 +
+        "rem";
+
+      el.style.animationDuration =
+        8 +
+        Math.random() * 10 +
+        "s";
+
+      floatersContainer.appendChild(el);
+
+      setTimeout(
+        () => el.remove(),
+        20000
+      );
+    }
+
+
+    // =====================================================
+    // 67 CLICK POP
+    // =====================================================
+
+    function clickPopHandler(e) {
+
+      const pop =
+        document.createElement("div");
+
+      pop.className =
+        "sixty-seven-pop";
+
+      pop.textContent = "67";
+
+      pop.style.left =
+        e.clientX - 30 + "px";
+
+      pop.style.top =
+        e.clientY - 30 + "px";
+
+      document.body.appendChild(pop);
+
+      setTimeout(
+        () => pop.remove(),
+        1200
+      );
+    }
+
+
+    // =====================================================
+    // START / STOP CHAOS
+    // =====================================================
+
+    function startChaos() {
+
+      cycleBrainrot();
+
+      brainrotInterval =
+        setInterval(
+          cycleBrainrot,
+          2500
+        );
+
+      rerollKreta();
+
+      kretaInterval =
+        setInterval(
+          rerollKreta,
+          6000
+        );
+
+      rerollIgazsag();
+
+      igazsagInterval =
+        setInterval(
+          rerollIgazsag,
+          7000
+        );
+
+
+      for (
+        let i = 0;
+        i < 8;
+        i++
+      ) {
+        setTimeout(
+          spawnFloater,
+          i * 800
+        );
+      }
+
+
+      floaterInterval =
+        setInterval(
+          spawnFloater,
+          1800
+        );
+
+
+      document.body.addEventListener(
+        "click",
+        clickPopHandler
+      );
+    }
+
+
+    function stopChaos() {
+
+      clearInterval(
+        brainrotInterval
+      );
+
+      clearInterval(
+        kretaInterval
+      );
+
+      clearInterval(
+        igazsagInterval
+      );
+
+      clearInterval(
+        floaterInterval
+      );
+
+
+      brainrotInterval = null;
+      kretaInterval = null;
+      igazsagInterval = null;
+      floaterInterval = null;
+
+
+      document.body.removeEventListener(
+        "click",
+        clickPopHandler
+      );
+
+
+      floatersContainer.innerHTML = "";
+    }
+
+
+    // =====================================================
+    // MEGOSZTÁS
+    // =====================================================
+
+    async function shareSite() {
+
+      const shareData = {
+
+        title:
+          "Ennyi Nap a Suli",
+
+        text:
+          `Már csak ${daysEl.textContent} nap van hátra a suliból 🎒`,
+
+        url:
+          "https://ennyinapasuli.hu/"
+      };
+
+
+      if (
+        navigator.share
+      ) {
+
+        try {
+          await navigator.share(
+            shareData
+          );
+        } catch (e) {
+          // A felhasználó bezárta a megosztást.
+        }
+
+        return;
+      }
+
+
+      const btn =
+        document.getElementById(
+          "shareBtn"
+        );
+
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          await navigator.clipboard.writeText(
+            shareData.url
+          );
+
+        } else {
+
+          const textarea =
+            document.createElement(
+              "textarea"
+            );
+
+          textarea.value =
+            shareData.url;
+
+          textarea.style.position =
+            "fixed";
+
+          textarea.style.opacity =
+            "0";
+
+          document.body.appendChild(
+            textarea
+          );
+
+          textarea.select();
+
+          document.execCommand(
+            "copy"
+          );
+
+          textarea.remove();
+        }
+
+
+        const oldText =
+          btn.textContent;
+
+        btn.textContent =
+          "✅ Link másolva!";
+
+
+        setTimeout(
+          () => {
+            btn.textContent =
+              oldText;
+          },
+          1800
+        );
+
+      } catch (e) {
+
+        btn.textContent =
+          "❌ Nem sikerült másolni";
+
+        setTimeout(
+          () => {
+            btn.textContent =
+              "📤 Megosztás";
+          },
+          1800
+        );
+      }
+    }
+
+
+    // =====================================================
+    // "67" EASTER EGG
+    // =====================================================
+
+    let typedBuffer = "";
+
+
+    window.addEventListener(
+      "keydown",
+      (e) => {
+
+        if (
+          /^[0-9]$/.test(e.key)
+        ) {
+
+          typedBuffer =
+            (
+              typedBuffer +
+              e.key
+            ).slice(-2);
+
+
+          if (
+            typedBuffer === "67"
+          ) {
+
+            toggleChaos();
+
+            typedBuffer = "";
+          }
+
+        } else {
+
+          typedBuffer = "";
+        }
+      }
+    );
+
+
+    // =====================================================
+    // ÉRETTSÉGI VISSZASZÁMLÁLÓ
+    // =====================================================
+
+    const erettsegiDates = [
+
+      {
+        name:
+          "Magyar nyelv és irodalom (ősz)",
+
+        date:
+          new Date(
+            "2026-10-12T08:00:00"
+          )
+      },
+
+      {
+        name:
+          "Magyar nyelv és irodalom (tavasz)",
+
+        date:
+          new Date(
+            "2027-05-03T09:00:00"
+          )
+      }
+
+    ];
+
+
+    const erettsegiNameEl =
+      document.getElementById(
+        "erettsegiName"
+      );
+
+
+    const erettsegiCountdownEl =
+      document.getElementById(
+        "erettsegiCountdown"
+      );
+
+
+    function updateErettsegiCountdown() {
+
+      const nowE =
+        new Date();
+
+
+      const next =
+        erettsegiDates
+          .filter(
+            e =>
+              e.date >
+              nowE
+          )
+          .sort(
+            (a, b) =>
+              a.date -
+              b.date
+          )[0];
+
+
+      if (!next) {
+
+        erettsegiNameEl.textContent =
+          "Erre a tanévre nincs több hivatalos időpont";
+
+        erettsegiCountdownEl.textContent =
+          "🎉";
+
+        return;
+      }
+
+
+      const diffMs =
+        next.date -
+        nowE;
+
+
+      const d =
+        Math.floor(
+          diffMs /
+          (
+            1000 *
+            60 *
+            60 *
+            24
+          )
+        );
+
+
+      const h =
+        Math.floor(
+          (
+            diffMs /
+            (
+              1000 *
+              60 *
+              60
+            )
+          ) % 24
+        );
+
+
+      const m =
+        Math.floor(
+          (
+            diffMs /
+            (
+              1000 *
+              60
+            )
+          ) % 60
+        );
+
+
+      erettsegiNameEl.textContent =
+        next.name;
+
+
+      erettsegiCountdownEl.textContent =
+        `${d} nap ${h} óra ${m} perc`;
+    }
+
+
+    updateErettsegiCountdown();
+
+
+    setInterval(
+      updateErettsegiCountdown,
+      60000
+    );
+
+
+    // =====================================================
+    // AURA RENDSZER
+    // =====================================================
+
+    const AURA_KEY =
+      "ennyinapasuli_aura";
+
+
+    function loadAura() {
+
+      try {
+
+        const raw =
+          localStorage.getItem(
+            AURA_KEY
+          );
+
+
+        if (raw) {
+          return JSON.parse(
+            raw
+          );
+        }
+
+      } catch (e) {}
+
+      return {
+        visits: 0,
+        totalSeconds: 0
+      };
+    }
+
+
+    function saveAura(data) {
+
+      try {
+
+        localStorage.setItem(
+          AURA_KEY,
+          JSON.stringify(data)
+        );
+
+      } catch (e) {}
+    }
+
+
+    let auraData =
+      loadAura();
+
+
+    auraData.visits =
+      (auraData.visits || 0) +
+      1;
+
+
+    saveAura(
+      auraData
+    );
+
+
+    const auraScoreTextEl =
+      document.getElementById(
+        "auraScoreText"
+      );
+
+
+    const auraLabelEl =
+      document.getElementById(
+        "auraLabel"
+      );
+
+
+    function auraLevelLabel(
+      score
+    ) {
+
+      if (
+        score < 100
+      ) {
+        return "még csak most kezdted nézegetni...";
+      }
+
+      if (
+        score < 500
+      ) {
+        return "kezdő aura-gyűjtő 🌱";
+      }
+
+      if (
+        score < 1500
+      ) {
+        return "van benned potenciál 👀";
+      }
+
+      if (
+        score < 4000
+      ) {
+        return "sigma szintű oldalbámuló 🗿";
+      }
+
+      if (
+        score < 10000
+      ) {
+        return "rizzlord tier aura 🔥";
+      }
+
+      return "67-es szintű legenda, menj inkább tanulni 💀🎓";
+    }
+
+
+    function computeAuraScore() {
+
+      return (
+        auraData.visits * 67 +
+        Math.floor(
+          auraData.totalSeconds
+        )
+      );
+    }
+
+
+    function renderAura() {
+
+      const score =
+        computeAuraScore();
+
+
+      auraScoreTextEl.innerHTML =
+        `<span class="aura-score">${score.toLocaleString("hu-HU")}</span> aura`;
+
+
+      auraLabelEl.textContent =
+        `${auraData.visits} látogatás · ${Math.floor(auraData.totalSeconds)} mp nézve · ${auraLevelLabel(score)}`;
+    }
+
+
+    renderAura();
+
+
+    // =====================================================
+    // AURA IDŐ
+    // =====================================================
+
+    setInterval(
+      () => {
+
+        auraData.totalSeconds += 1;
+
+        renderAura();
+
+      },
+      1000
+    );
+
+
+    setInterval(
+      () => {
+
+        saveAura(
+          auraData
+        );
+
+      },
+      5000
+    );
+
+
+    window.addEventListener(
+      "beforeunload",
+      () => {
+
+        saveAura(
+          auraData
+        );
+      }
+    );
+
+
+    // =====================================================
+    // STORY KÉP GENERÁTOR
+    // =====================================================
+
+    function generateShareImage() {
+
+      const canvas =
+        document.createElement(
+          "canvas"
+        );
+
+
+      canvas.width = 1080;
+      canvas.height = 1920;
+
+
+      const ctx =
+        canvas.getContext(
+          "2d"
+        );
+
+
+      if (!ctx) {
+        return;
+      }
+
+
+      // Háttér
+      const grad =
+        ctx.createLinearGradient(
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+
+      grad.addColorStop(
+        0,
+        "#0f0c29"
+      );
+
+      grad.addColorStop(
+        0.5,
+        "#302b63"
+      );
+
+      grad.addColorStop(
+        1,
+        "#24243e"
+      );
+
+
+      ctx.fillStyle =
+        grad;
+
+      ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
+
+      ctx.textAlign =
+        "center";
+
+
+      if (chaosActive) {
+
+        // CHAOS
+        ctx.fillStyle =
+          "rgba(255,255,255,0.85)";
+
+        ctx.font =
+          "900 60px 'Segoe UI', sans-serif";
+
+        ctx.fillText(
+          "MÉG ENNYI VAN A SULIBÓL",
+          canvas.width / 2,
+          650
+        );
+
+
+        ctx.fillStyle =
+          "#ffd166";
+
+        ctx.font =
+          "900 380px 'Segoe UI', sans-serif";
+
+        ctx.fillText(
+          "67",
+          canvas.width / 2,
+          1020
+        );
+
+
+        ctx.fillStyle =
+          "#f5f5f5";
+
+        ctx.font =
+          "900 64px 'Segoe UI', sans-serif";
+
+        ctx.fillText(
+          "NAP 💀",
+          canvas.width / 2,
+          1130
+        );
+
+
+        ctx.font =
+          "44px 'Segoe UI', sans-serif";
+
+        ctx.fillStyle =
+          "rgba(255,255,255,0.55)";
+
+        ctx.fillText(
+          "(vagy nem, de a 67 az 67)",
+          canvas.width / 2,
+          1220
+        );
+
+      } else {
+
+        // NORMAL
+        ctx.fillStyle =
+          "rgba(255,255,255,0.85)";
+
+        ctx.font =
+          "900 58px 'Segoe UI', sans-serif";
+
+        ctx.fillText(
+          "MÉG ENNYI VAN A SULIBÓL",
+          canvas.width / 2,
+          650
+        );
+
+
+        ctx.fillStyle =
+          "#ffd166";
+
+        ctx.font =
+          "900 340px 'Segoe UI', sans-serif";
+
+        ctx.fillText(
+          daysEl.textContent,
+          canvas.width / 2,
+          1020
+        );
+
+
+        ctx.fillStyle =
+          "#f5f5f5";
+
+        ctx.font =
+          "900 60px 'Segoe UI', sans-serif";
+
+        ctx.fillText(
+          "NAP",
+          canvas.width / 2,
+          1120
+        );
+
+
+        ctx.font =
+          "44px 'Segoe UI', sans-serif";
+
+        ctx.fillStyle =
+          "rgba(255,255,255,0.55)";
+
+        ctx.fillText(
+          "2026/27-es tanév",
+          canvas.width / 2,
+          1210
+        );
+      }
+
+
+      // Footer a képen
+      ctx.font =
+        "900 46px 'Segoe UI', sans-serif";
+
+      ctx.fillStyle =
+        "#7fdbff";
+
+      ctx.fillText(
+        "ennyinapasuli.hu",
+        canvas.width / 2,
+        1800
+      );
+
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+
+      link.download =
+        chaosActive
+          ? "67-nap-a-suli.png"
+          : "ennyi-nap-a-suli.png";
+
+
+      link.href =
+        canvas.toDataURL(
+          "image/png"
+        );
+
+
+      link.click();
+    }
+
+
+    // =====================================================
+    // SAJÁT LOCALSTORAGE NÉZETSZÁMLÁLÓ
+    // =====================================================
+
+    document.getElementById(
+      "visitCounter"
+    ).textContent =
+      `👀 Te már ${auraData.visits}. alkalommal nézed ezt az oldalt`;
+  </script>
+
+</body>
+</html>
