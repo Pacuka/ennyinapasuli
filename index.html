@@ -4,41 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ennyi Nap a Suli — Tanév Visszaszámláló</title>
+  <!-- =====================================================
+       SEO
+  ====================================================== -->
+
+  <title>Hány nap van még a suliból? — Ennyi Nap a Suli | 2026/2027</title>
 
   <meta
     name="description"
-    content="Élő visszaszámláló arra, hogy hány nap van hátra a 2026/2027-es tanévből. Kattints ✨ vagy gépeld be: 67."
+    content="Hány nap van még a suliból? Nézd meg élőben, pontosan hány nap van hátra a 2026/2027-es tanév végéig! Suli visszaszámláló, érettségi számláló és sulis easter eggek."
   >
-  <meta name="theme-color" content="#0f0c29">
+
+  <meta
+    name="keywords"
+    content="hány nap van még a suliból, hány nap van még a suliból 2027, suli visszaszámláló, tanév visszaszámláló, iskolai visszaszámláló, tanév vége 2027, nyári szünet 2027, mikor lesz vége a sulinak, iskolai szünet 2026 2027, érettségi visszaszámláló, e-Kréta"
+  >
+
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Pacuka">
 
   <link rel="canonical" href="https://ennyinapasuli.hu/">
 
-  <!-- Open Graph -->
+  <meta name="theme-color" content="#0f0c29">
+  <meta name="application-name" content="Ennyi Nap a Suli">
+
+  <!-- =====================================================
+       OPEN GRAPH
+  ====================================================== -->
+
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ennyi Nap a Suli — Tanév Visszaszámláló">
+
+  <meta
+    property="og:title"
+    content="Hány nap van még a suliból? — Ennyi Nap a Suli"
+  >
+
   <meta
     property="og:description"
-    content="Hány nap van még hátra a suliból? Nézd meg élőben, aztán gépeld be: 67 👀"
+    content="Élő tanév-visszaszámláló: nézd meg, hány nap van még hátra a suli végéig! 👀🎒"
   >
-  <meta property="og:url" content="https://ennyinapasuli.hu/">
-  <meta property="og:locale" content="hu_HU">
 
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Ennyi Nap a Suli">
+  <meta
+    property="og:url"
+    content="https://ennyinapasuli.hu/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="Ennyi Nap a Suli"
+  >
+
+  <meta
+    property="og:locale"
+    content="hu_HU"
+  >
+
+  <meta
+    property="og:image"
+    content="https://ennyinapasuli.hu/og-image.png"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="Ennyi Nap a Suli — tanév visszaszámláló"
+  >
+
+  <!-- =====================================================
+       TWITTER / X
+  ====================================================== -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Hány nap van még a suliból?"
+  >
+
   <meta
     name="twitter:description"
-    content="Élő tanév-visszaszámláló. Van benne easter egg is 👀"
+    content="Élő tanév-visszaszámláló a 2026/2027-es tanévhez. Nézd meg, hány napot kell még kibírni! 🎒"
   >
 
-  <!-- Favicon -->
+  <meta
+    name="twitter:image"
+    content="https://ennyinapasuli.hu/og-image.png"
+  >
+
+  <!-- =====================================================
+       FAVICON
+  ====================================================== -->
+
   <link
     rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎒</text></svg>"
   >
 
+  <!-- =====================================================
+       STRUCTURED DATA / GOOGLE
+  ====================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ennyi Nap a Suli",
+    "alternateName": "Hány nap van még a suliból?",
+    "url": "https://ennyinapasuli.hu/",
+    "description": "Élő tanév-visszaszámláló a 2026/2027-es tanévhez.",
+    "inLanguage": "hu"
+  }
+  </script>
+
+
+  <!-- =====================================================
+       CSS
+  ====================================================== -->
+
   <style>
+
     :root {
       --bg1: #0f0c29;
       --bg2: #302b63;
@@ -57,15 +143,18 @@
       --radius: 16px;
     }
 
+
     * {
       box-sizing: border-box;
     }
+
 
     html {
       margin: 0;
       padding: 0;
       min-height: 100%;
     }
+
 
     body {
       margin: 0;
@@ -100,12 +189,15 @@
       overflow-y: auto;
     }
 
-    body::selection {
+
+    ::selection {
       background: var(--accent);
       color: #1a1a2e;
     }
 
+
     @keyframes gradientShift {
+
       0% {
         background-position: 0% 50%;
       }
@@ -117,11 +209,13 @@
       100% {
         background-position: 0% 50%;
       }
+
     }
+
 
     /* =====================================================
        CONTENT
-    ===================================================== */
+    ====================================================== */
 
     .content {
       position: relative;
@@ -136,9 +230,10 @@
       align-items: center;
     }
 
+
     /* =====================================================
        HERO
-    ===================================================== */
+    ====================================================== */
 
     h1 {
       margin: 4px 0 0;
@@ -152,6 +247,7 @@
 
       opacity: 0.82;
     }
+
 
     .number {
       margin: 12px 0 4px;
@@ -176,7 +272,9 @@
       letter-spacing: -0.07em;
     }
 
+
     @keyframes pulse {
+
       0%,
       100% {
         transform: scale(1);
@@ -185,7 +283,9 @@
       50% {
         transform: scale(1.018);
       }
+
     }
+
 
     .label {
       margin-top: 6px;
@@ -197,6 +297,7 @@
       opacity: 0.84;
     }
 
+
     .emoji {
       min-height: 1.4em;
 
@@ -204,6 +305,7 @@
 
       font-size: clamp(1.8rem, 5vw, 2.5rem);
     }
+
 
     .sub {
       width: min(100%, 650px);
@@ -218,35 +320,78 @@
       opacity: 0.48;
     }
 
+
+    /* =====================================================
+       SEO CONTENT
+    ====================================================== */
+
+    .seo-content {
+      width: min(100%, 700px);
+
+      margin-top: 50px;
+      padding: 24px 20px;
+
+      color: var(--muted);
+
+      border-top:
+        1px solid rgba(255, 255, 255, 0.06);
+
+      text-align: left;
+
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+
+    .seo-content h2 {
+      margin: 0 0 8px;
+
+      color: rgba(255, 255, 255, 0.85);
+
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+
+    .seo-content h2:not(:first-child) {
+      margin-top: 24px;
+    }
+
+
+    .seo-content p {
+      margin: 0;
+    }
+
+
     /* =====================================================
        CHAOS MODE
-    ===================================================== */
+    ====================================================== */
 
     .chaos-only {
       display: none;
     }
 
+
     body.chaos-active .chaos-only {
       display: block;
     }
 
-    /*
-      FONTOS:
-      Az .info-row flex/grid layoutját nem szabad
-      display:block-kal felülírni Chaos Mode-ban.
-    */
 
     body.chaos-active .info-row.chaos-only {
       display: grid;
     }
 
+
     body.chaos-active .number {
-      animation: pulse 1.4s ease-in-out infinite;
+      animation:
+        pulse 1.4s ease-in-out infinite;
     }
+
 
     body.chaos-active .sub {
       opacity: 0.5;
     }
+
 
     .brainrot {
       width: min(100%, 760px);
@@ -267,9 +412,10 @@
       opacity: 0.92;
     }
 
+
     /* =====================================================
        BUTTONS
-    ===================================================== */
+    ====================================================== */
 
     .actions {
       width: 100%;
@@ -284,6 +430,7 @@
 
       gap: 9px;
     }
+
 
     .action-btn,
     .krecs-btn {
@@ -319,31 +466,39 @@
         opacity 0.15s ease;
     }
 
+
     .action-btn:hover,
     .krecs-btn:hover {
       filter: brightness(1.06);
       transform: translateY(-1px);
     }
 
+
     .action-btn:active,
     .krecs-btn:active {
       transform: scale(0.95);
     }
 
+
     .action-btn.blue {
       background: var(--blue);
     }
 
+
     .action-btn.dark {
-      background: rgba(255, 255, 255, 0.1);
+      background:
+        rgba(255, 255, 255, 0.1);
+
       color: var(--text);
 
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
     }
+
 
     /* =====================================================
        AURA
-    ===================================================== */
+    ====================================================== */
 
     .aura-box {
       width: min(100%, 440px);
@@ -355,14 +510,19 @@
 
       border-radius: var(--radius);
 
-      background: rgba(127, 219, 255, 0.065);
+      background:
+        rgba(127, 219, 255, 0.065);
 
-      border: 1px solid rgba(127, 219, 255, 0.24);
+      border:
+        1px solid rgba(127, 219, 255, 0.24);
 
-      font-size: clamp(0.85rem, 2.8vw, 1rem);
+      font-size:
+        clamp(0.85rem, 2.8vw, 1rem);
 
-      font-variant-numeric: tabular-nums;
+      font-variant-numeric:
+        tabular-nums;
     }
+
 
     .aura-score {
       color: var(--blue);
@@ -370,8 +530,10 @@
       font-size: 1.2em;
       font-weight: 950;
 
-      font-variant-numeric: tabular-nums;
+      font-variant-numeric:
+        tabular-nums;
     }
+
 
     .aura-label {
       min-height: 1.2em;
@@ -385,9 +547,10 @@
       opacity: 0.6;
     }
 
+
     /* =====================================================
        ÉRETTSÉGI
-    ===================================================== */
+    ====================================================== */
 
     .erettsegi-box {
       width: min(100%, 500px);
@@ -399,14 +562,18 @@
 
       border-radius: var(--radius);
 
-      background: rgba(255, 107, 107, 0.065);
+      background:
+        rgba(255, 107, 107, 0.065);
 
-      border: 1px solid rgba(255, 107, 107, 0.24);
+      border:
+        1px solid rgba(255, 107, 107, 0.24);
 
-      font-size: clamp(0.85rem, 2.8vw, 1rem);
+      font-size:
+        clamp(0.85rem, 2.8vw, 1rem);
 
       line-height: 1.45;
     }
+
 
     .erettsegi-title {
       display: block;
@@ -418,6 +585,7 @@
       font-weight: 900;
     }
 
+
     .erettsegi-days {
       display: block;
 
@@ -425,15 +593,19 @@
 
       color: var(--accent);
 
-      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-size:
+        clamp(1.1rem, 4vw, 1.5rem);
+
       font-weight: 950;
 
-      font-variant-numeric: tabular-nums;
+      font-variant-numeric:
+        tabular-nums;
     }
+
 
     /* =====================================================
        CHAOS INFO CARDS
-    ===================================================== */
+    ====================================================== */
 
     .info-row {
       width: 100%;
@@ -450,6 +622,7 @@
       align-items: stretch;
     }
 
+
     .krecs,
     .igazsag {
       width: 100%;
@@ -461,19 +634,27 @@
 
       border-radius: var(--radius);
 
-      font-size: clamp(0.85rem, 2.8vw, 1rem);
+      font-size:
+        clamp(0.85rem, 2.8vw, 1rem);
+
       line-height: 1.5;
 
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
     }
 
-    .krecs {
-      background: rgba(255, 255, 255, 0.055);
 
-      border: 1px solid rgba(255, 209, 102, 0.24);
+    .krecs {
+      background:
+        rgba(255, 255, 255, 0.055);
+
+      border:
+        1px solid rgba(255, 209, 102, 0.24);
     }
+
 
     .krecs-title {
       display: block;
@@ -485,13 +666,17 @@
       font-weight: 950;
     }
 
-    .igazsag {
-      background: rgba(255, 209, 102, 0.065);
 
-      border: 1px solid rgba(255, 255, 255, 0.14);
+    .igazsag {
+      background:
+        rgba(255, 209, 102, 0.065);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.14);
 
       font-style: italic;
     }
+
 
     .igazsag-title {
       display: block;
@@ -505,6 +690,7 @@
       font-style: normal;
     }
 
+
     .krecs .krecs-btn,
     .igazsag .krecs-btn {
       align-self: center;
@@ -512,9 +698,10 @@
       margin-top: 13px;
     }
 
+
     /* =====================================================
        VISIT COUNTER
-    ===================================================== */
+    ====================================================== */
 
     .visit-counter {
       min-height: 1.2em;
@@ -528,9 +715,10 @@
       opacity: 0.4;
     }
 
+
     /* =====================================================
        SECRET BUTTON
-    ===================================================== */
+    ====================================================== */
 
     .secret-btn {
       position: fixed;
@@ -557,6 +745,7 @@
         transform 0.3s ease;
     }
 
+
     .secret-btn:hover {
       opacity: 0.65;
 
@@ -565,9 +754,10 @@
         scale(1.15);
     }
 
+
     /* =====================================================
        FLOATERS
-    ===================================================== */
+    ====================================================== */
 
     .floater {
       position: fixed;
@@ -576,17 +766,21 @@
 
       z-index: 0;
 
-      color: rgba(255, 255, 255, 0.07);
+      color:
+        rgba(255, 255, 255, 0.07);
 
       font-weight: 950;
 
       pointer-events: none;
       user-select: none;
 
-      animation: floatUp linear infinite;
+      animation:
+        floatUp linear infinite;
     }
 
+
     @keyframes floatUp {
+
       0% {
         transform:
           translateY(110vh)
@@ -598,7 +792,9 @@
           translateY(-20vh)
           rotate(360deg);
       }
+
     }
+
 
     .sixty-seven-pop {
       position: fixed;
@@ -612,10 +808,13 @@
 
       pointer-events: none;
 
-      animation: popFade 1.2s ease-out forwards;
+      animation:
+        popFade 1.2s ease-out forwards;
     }
 
+
     @keyframes popFade {
+
       0% {
         transform:
           scale(0.3)
@@ -640,11 +839,13 @@
 
         opacity: 0;
       }
+
     }
+
 
     /* =====================================================
        FOOTER
-    ===================================================== */
+    ====================================================== */
 
     footer {
       position: relative;
@@ -662,6 +863,7 @@
       opacity: 0.32;
     }
 
+
     footer a {
       color: inherit;
 
@@ -670,17 +872,20 @@
       text-decoration: none;
     }
 
+
     footer a:hover {
       opacity: 1;
 
       text-decoration: underline;
     }
 
+
     /* =====================================================
        RESPONSIVE
-    ===================================================== */
+    ====================================================== */
 
     @media (max-width: 760px) {
+
       body {
         padding:
           20px
@@ -688,36 +893,47 @@
           24px;
       }
 
+
       .content {
         width: 100%;
       }
 
+
       .number {
-        font-size: clamp(5rem, 27vw, 8rem);
+        font-size:
+          clamp(5rem, 27vw, 8rem);
       }
+
 
       .info-row {
         grid-template-columns: 1fr;
       }
 
+
       .krecs,
       .igazsag {
         min-height: 145px;
       }
+
     }
 
+
     @media (max-width: 500px) {
+
       body {
         padding-top: 18px;
       }
+
 
       h1 {
         font-size: 1.2rem;
       }
 
+
       .number {
         margin-top: 15px;
       }
+
 
       .sub {
         margin-top: 19px;
@@ -725,24 +941,29 @@
         font-size: 0.82rem;
       }
 
+
       .actions {
         flex-direction: column;
 
         width: min(100%, 330px);
       }
 
+
       .action-btn {
         width: 100%;
       }
+
 
       .erettsegi-box,
       .aura-box {
         width: 100%;
       }
 
+
       .info-row {
         gap: 12px;
       }
+
 
       .krecs,
       .igazsag {
@@ -751,72 +972,109 @@
           15px;
       }
 
+
       footer {
         padding:
           0
           25px;
       }
+
     }
 
+
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
+        animation-duration:
+          0.001ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        scroll-behavior:
+          auto !important;
       }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
   <div id="floaters"></div>
 
+
   <main class="content">
 
-    <!-- ================= HERO ================= -->
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
 
     <h1 id="pretext">
       Még ennyi nap van hátra a suliból:
     </h1>
 
-    <div class="number" id="days">--</div>
+
+    <div class="number" id="days">
+      --
+    </div>
+
 
     <div class="label" id="posttext">
       nap
     </div>
 
+
     <div class="emoji" id="emoji"></div>
 
-    <!-- ================= CHAOS TEXT ================= -->
+
+    <!-- ===================================================
+         CHAOS TEXT
+    ==================================================== -->
 
     <div
       class="brainrot chaos-only"
       id="brainrot"
     ></div>
 
-    <!-- ================= INFO ================= -->
+
+    <!-- ===================================================
+         INFO
+    ==================================================== -->
 
     <div class="sub">
-      📅 A számláló a 2026. szeptember 1-től 2027. június 18-ig tartó
-      tanévet számolja (a beállított tanévzárási dátum alapján).
+
+      📅 A számláló a 2026. szeptember 1-től
+      2027. június 18-ig tartó tanévet számolja
+      (a beállított tanévzárási dátum alapján).
+
       <br>
-      A pontos érték attól függhet, hogy melyik évfolyamon és
-      iskolatípusban jársz.
+
+      A pontos érték attól függhet, hogy melyik
+      évfolyamon és iskolatípusban jársz.
+
     </div>
 
-    <!-- ================= ÉRETTSÉGI ================= -->
+
+    <!-- ===================================================
+         ÉRETTSÉGI
+    ==================================================== -->
 
     <section class="erettsegi-box">
+
       <span class="erettsegi-title">
         🎓 Következő érettségi
       </span>
 
+
       <span id="erettsegiName">
         betöltés...
       </span>
+
 
       <span
         class="erettsegi-days"
@@ -824,9 +1082,13 @@
       >
         --
       </span>
+
     </section>
 
-    <!-- ================= ACTIONS ================= -->
+
+    <!-- ===================================================
+         ACTIONS
+    ==================================================== -->
 
     <div class="actions">
 
@@ -838,6 +1100,7 @@
         📤 Megosztás
       </button>
 
+
       <button
         class="action-btn blue"
         id="imgBtn"
@@ -845,6 +1108,7 @@
       >
         📸 Sztori kép mentése
       </button>
+
 
       <a
         href="https://intezmenykereso.e-kreta.hu/"
@@ -857,13 +1121,23 @@
 
     </div>
 
-    <!-- ================= AURA ================= -->
+
+    <!-- ===================================================
+         AURA
+    ==================================================== -->
 
     <section class="aura-box">
+
       <div id="auraScoreText">
-        <span class="aura-score">0</span>
+
+        <span class="aura-score">
+          0
+        </span>
+
         aura
+
       </div>
+
 
       <div
         class="aura-label"
@@ -871,18 +1145,26 @@
       >
         még csak most kezdted nézegetni...
       </div>
+
     </section>
 
-    <!-- ================= VISIT ================= -->
+
+    <!-- ===================================================
+         VISIT
+    ==================================================== -->
 
     <div
       class="visit-counter"
       id="visitCounter"
     ></div>
 
-    <!-- ================= CHAOS CARDS ================= -->
+
+    <!-- ===================================================
+         CHAOS CARDS
+    ==================================================== -->
 
     <section class="info-row chaos-only">
+
 
       <article class="krecs">
 
@@ -890,9 +1172,11 @@
           🚨 e-Kréta állapotjelentés 🚨
         </span>
 
+
         <span id="krecsText">
           betöltés... ⏳
         </span>
+
 
         <button
           class="krecs-btn"
@@ -903,15 +1187,18 @@
 
       </article>
 
+
       <article class="igazsag">
 
         <span class="igazsag-title">
           🧠 Örök sulis igazságok 🧠
         </span>
 
+
         <span id="igazsagText">
           betöltés... ⏳
         </span>
+
 
         <button
           class="krecs-btn"
@@ -922,14 +1209,71 @@
 
       </article>
 
+
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- ===================================================
+         SEO CONTENT
+    ==================================================== -->
+
+    <article class="seo-content">
+
+      <h2>
+        Hány nap van még a suliból?
+      </h2>
+
+      <p>
+
+        Az <strong>Ennyi Nap a Suli</strong> egy élő
+        tanév-visszaszámláló, amely megmutatja,
+        hogy hány nap van még hátra a 2026/2027-es
+        tanév végéig. Ha már azt számolod, mikor lesz
+        végre nyári szünet, itt egy helyen megnézheted
+        a hátralévő napokat.
+
+      </p>
+
+
+      <h2>
+        Iskolai szünetek és a tanév vége
+      </h2>
+
+      <p>
+
+        A visszaszámláló a 2026/2027-es tanév végéhez
+        igazodik. Az oldalon emellett érettségi-
+        visszaszámláló, e-Kréta témájú poénok,
+        aura rendszer és egy titkos
+        <strong>67-es easter egg</strong> is található.
+
+      </p>
+
+
+      <h2>
+        Mi az Ennyi Nap a Suli?
+      </h2>
+
+      <p>
+
+        Egy egyszerű sulis visszaszámláló diákoknak.
+        Nézd meg, hány napot kell még kibírni,
+        oszd meg az eredményt a haverokkal,
+        és próbáld ki a titkos 67-es kódot. 🎒💀
+
+      </p>
+
+    </article>
+    
+    <!-- ===================================================
+         FOOTER
+    ==================================================== -->
 
     <footer>
+
       ennyinapasuli.hu
       &middot;
       Made by
+
       <a
         href="https://github.com/Pacuka"
         target="_blank"
@@ -937,11 +1281,15 @@
       >
         Pacuka
       </a>
+
     </footer>
 
   </main>
 
-  <!-- ================= SECRET ================= -->
+
+  <!-- =====================================================
+       SECRET BUTTON
+  ====================================================== -->
 
   <button
     class="secret-btn"
@@ -952,14 +1300,24 @@
     ✨
   </button>
 
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
   <script>
+
     // =====================================================
     // TANÉV VISSZASZÁMLÁLÓ
     // =====================================================
 
-    const schoolEnd = new Date("2027-06-19T00:00:00");
+    const schoolEnd =
+      new Date("2027-06-19T00:00:00");
 
-    const now = new Date();
+
+    const now =
+      new Date();
+
 
     const msPerDay =
       1000 *
@@ -967,20 +1325,25 @@
       60 *
       24;
 
+
     const diffDays =
       Math.ceil(
         (schoolEnd - now) /
         msPerDay
       );
 
+
     const daysEl =
       document.getElementById("days");
+
 
     const preEl =
       document.getElementById("pretext");
 
+
     const postEl =
       document.getElementById("posttext");
+
 
     const emojiEl =
       document.getElementById("emoji");
@@ -988,9 +1351,11 @@
 
     if (diffDays > 0) {
 
-      daysEl.textContent = diffDays;
+      daysEl.textContent =
+        diffDays;
 
-      postEl.textContent = "nap";
+      postEl.textContent =
+        "nap";
 
       emojiEl.textContent =
         diffDays <= 7
@@ -999,19 +1364,25 @@
             ? "📚"
             : "⏳";
 
-    } else if (diffDays === 0) {
+    }
+
+    else if (diffDays === 0) {
 
       preEl.textContent =
         "Ma van az utolsó nap!";
 
-      daysEl.textContent = "🎓";
+      daysEl.textContent =
+        "🎓";
 
       postEl.textContent =
         "Szabadság!";
 
-      emojiEl.textContent = "🥳";
+      emojiEl.textContent =
+        "🥳";
 
-    } else {
+    }
+
+    else {
 
       preEl.textContent =
         "A tanév már véget ért, élvezd a szünetet:";
@@ -1022,7 +1393,9 @@
       postEl.textContent =
         "napja";
 
-      emojiEl.textContent = "🏖️";
+      emojiEl.textContent =
+        "🏖️";
+
     }
 
 
@@ -1043,16 +1416,21 @@
       chaosActive =
         !chaosActive;
 
+
       document.body.classList.toggle(
         "chaos-active",
         chaosActive
       );
 
+
       if (chaosActive) {
         startChaos();
-      } else {
+      }
+
+      else {
         stopChaos();
       }
+
     }
 
 
@@ -1091,11 +1469,13 @@
       "a tanterem tele van NPC-kkel 🤖",
 
       "Grimace Shake szintű hangulat a matekórán 🟣😵"
+
     ];
 
 
     const brainrotEl =
       document.getElementById("brainrot");
+
 
     let brainrotIndex = 0;
 
@@ -1109,6 +1489,7 @@
         ];
 
       brainrotIndex++;
+
     }
 
 
@@ -1141,6 +1522,7 @@
       "🧟 Zombiszerver: néha működik, de csak akkor, amikor senkinek nem kell.",
 
       "🎢 Egy sima jegybeírásból is képes három különböző hibaüzenetet gyártani."
+
     ];
 
 
@@ -1157,6 +1539,7 @@
             kretaComplaints.length
           )
         ];
+
     }
 
 
@@ -1223,6 +1606,7 @@
       "Ha három ember ül egy padban, az már hivatalosan közösségi tér. 🛋️👨‍👩‍👦",
 
       "A becsengetés előtti utolsó másodperc mindig a leghosszabb az életedben. ⏳😰"
+
     ];
 
 
@@ -1239,6 +1623,7 @@
             igazsagok.length
           )
         ];
+
     }
 
 
@@ -1251,6 +1636,7 @@
 
 
     const extraWords = [
+
       "skibidi",
       "rizz",
       "gyatt",
@@ -1260,6 +1646,7 @@
       "mewing",
       "fanum tax",
       "aura"
+
     ];
 
 
@@ -1268,7 +1655,10 @@
       const el =
         document.createElement("div");
 
-      el.className = "floater";
+
+      el.className =
+        "floater";
+
 
       el.textContent =
         Math.random() < 0.5
@@ -1280,25 +1670,35 @@
               )
             ];
 
+
       el.style.left =
-        Math.random() * 100 + "vw";
+        Math.random() *
+        100 +
+        "vw";
+
 
       el.style.fontSize =
         2 +
-        Math.random() * 4 +
+        Math.random() *
+        4 +
         "rem";
+
 
       el.style.animationDuration =
         8 +
-        Math.random() * 10 +
+        Math.random() *
+        10 +
         "s";
 
+
       floatersContainer.appendChild(el);
+
 
       setTimeout(
         () => el.remove(),
         20000
       );
+
     }
 
 
@@ -1311,23 +1711,37 @@
       const pop =
         document.createElement("div");
 
+
       pop.className =
         "sixty-seven-pop";
 
-      pop.textContent = "67";
+
+      pop.textContent =
+        "67";
+
 
       pop.style.left =
-        e.clientX - 30 + "px";
+        e.clientX -
+        30 +
+        "px";
+
 
       pop.style.top =
-        e.clientY - 30 + "px";
+        e.clientY -
+        30 +
+        "px";
 
-      document.body.appendChild(pop);
+
+      document.body.appendChild(
+        pop
+      );
+
 
       setTimeout(
         () => pop.remove(),
         1200
       );
+
     }
 
 
@@ -1339,13 +1753,16 @@
 
       cycleBrainrot();
 
+
       brainrotInterval =
         setInterval(
           cycleBrainrot,
           2500
         );
 
+
       rerollKreta();
+
 
       kretaInterval =
         setInterval(
@@ -1353,7 +1770,9 @@
           6000
         );
 
+
       rerollIgazsag();
+
 
       igazsagInterval =
         setInterval(
@@ -1367,10 +1786,12 @@
         i < 8;
         i++
       ) {
+
         setTimeout(
           spawnFloater,
           i * 800
         );
+
       }
 
 
@@ -1385,6 +1806,7 @@
         "click",
         clickPopHandler
       );
+
     }
 
 
@@ -1419,7 +1841,9 @@
       );
 
 
-      floatersContainer.innerHTML = "";
+      floatersContainer.innerHTML =
+        "";
+
     }
 
 
@@ -1439,6 +1863,7 @@
 
         url:
           "https://ennyinapasuli.hu/"
+
       };
 
 
@@ -1447,9 +1872,11 @@
       ) {
 
         try {
+
           await navigator.share(
             shareData
           );
+
         } catch (e) {
           // A felhasználó bezárta a megosztást.
         }
@@ -1475,38 +1902,49 @@
             shareData.url
           );
 
-        } else {
+        }
+
+        else {
 
           const textarea =
             document.createElement(
               "textarea"
             );
 
+
           textarea.value =
             shareData.url;
+
 
           textarea.style.position =
             "fixed";
 
+
           textarea.style.opacity =
             "0";
+
 
           document.body.appendChild(
             textarea
           );
 
+
           textarea.select();
+
 
           document.execCommand(
             "copy"
           );
 
+
           textarea.remove();
+
         }
 
 
         const oldText =
           btn.textContent;
+
 
         btn.textContent =
           "✅ Link másolva!";
@@ -1520,10 +1958,13 @@
           1800
         );
 
-      } catch (e) {
+      }
+
+      catch (e) {
 
         btn.textContent =
           "❌ Nem sikerült másolni";
+
 
         setTimeout(
           () => {
@@ -1532,7 +1973,9 @@
           },
           1800
         );
+
       }
+
     }
 
 
@@ -1564,13 +2007,20 @@
 
             toggleChaos();
 
-            typedBuffer = "";
+            typedBuffer =
+              "";
+
           }
 
-        } else {
-
-          typedBuffer = "";
         }
+
+        else {
+
+          typedBuffer =
+            "";
+
+        }
+
       }
     );
 
@@ -1590,6 +2040,7 @@
             "2026-10-12T08:00:00"
           )
       },
+
 
       {
         name:
@@ -1641,10 +2092,13 @@
         erettsegiNameEl.textContent =
           "Erre a tanévre nincs több hivatalos időpont";
 
+
         erettsegiCountdownEl.textContent =
           "🎉";
 
+
         return;
+
       }
 
 
@@ -1696,6 +2150,7 @@
 
       erettsegiCountdownEl.textContent =
         `${d} nap ${h} óra ${m} perc`;
+
     }
 
 
@@ -1727,17 +2182,25 @@
 
 
         if (raw) {
+
           return JSON.parse(
             raw
           );
+
         }
 
-      } catch (e) {}
+      }
+
+      catch (e) {}
+
 
       return {
+
         visits: 0,
         totalSeconds: 0
+
       };
+
     }
 
 
@@ -1750,7 +2213,10 @@
           JSON.stringify(data)
         );
 
-      } catch (e) {}
+      }
+
+      catch (e) {}
+
     }
 
 
@@ -1790,11 +2256,13 @@
         return "még csak most kezdted nézegetni...";
       }
 
+
       if (
         score < 500
       ) {
         return "kezdő aura-gyűjtő 🌱";
       }
+
 
       if (
         score < 1500
@@ -1802,11 +2270,13 @@
         return "van benned potenciál 👀";
       }
 
+
       if (
         score < 4000
       ) {
         return "sigma szintű oldalbámuló 🗿";
       }
+
 
       if (
         score < 10000
@@ -1814,18 +2284,22 @@
         return "rizzlord tier aura 🔥";
       }
 
+
       return "67-es szintű legenda, menj inkább tanulni 💀🎓";
+
     }
 
 
     function computeAuraScore() {
 
       return (
-        auraData.visits * 67 +
+        auraData.visits *
+        67 +
         Math.floor(
           auraData.totalSeconds
         )
       );
+
     }
 
 
@@ -1841,6 +2315,7 @@
 
       auraLabelEl.textContent =
         `${auraData.visits} látogatás · ${Math.floor(auraData.totalSeconds)} mp nézve · ${auraLevelLabel(score)}`;
+
     }
 
 
@@ -1854,7 +2329,8 @@
     setInterval(
       () => {
 
-        auraData.totalSeconds += 1;
+        auraData.totalSeconds +=
+          1;
 
         renderAura();
 
@@ -1882,6 +2358,7 @@
         saveAura(
           auraData
         );
+
       }
     );
 
@@ -1898,8 +2375,11 @@
         );
 
 
-      canvas.width = 1080;
-      canvas.height = 1920;
+      canvas.width =
+        1080;
+
+      canvas.height =
+        1920;
 
 
       const ctx =
@@ -1913,7 +2393,6 @@
       }
 
 
-      // Háttér
       const grad =
         ctx.createLinearGradient(
           0,
@@ -1928,10 +2407,12 @@
         "#0f0c29"
       );
 
+
       grad.addColorStop(
         0.5,
         "#302b63"
       );
+
 
       grad.addColorStop(
         1,
@@ -1941,6 +2422,7 @@
 
       ctx.fillStyle =
         grad;
+
 
       ctx.fillRect(
         0,
@@ -1956,12 +2438,13 @@
 
       if (chaosActive) {
 
-        // CHAOS
         ctx.fillStyle =
           "rgba(255,255,255,0.85)";
 
+
         ctx.font =
           "900 60px 'Segoe UI', sans-serif";
+
 
         ctx.fillText(
           "MÉG ENNYI VAN A SULIBÓL",
@@ -1973,8 +2456,10 @@
         ctx.fillStyle =
           "#ffd166";
 
+
         ctx.font =
           "900 380px 'Segoe UI', sans-serif";
+
 
         ctx.fillText(
           "67",
@@ -1986,8 +2471,10 @@
         ctx.fillStyle =
           "#f5f5f5";
 
+
         ctx.font =
           "900 64px 'Segoe UI', sans-serif";
+
 
         ctx.fillText(
           "NAP 💀",
@@ -1999,8 +2486,10 @@
         ctx.font =
           "44px 'Segoe UI', sans-serif";
 
+
         ctx.fillStyle =
           "rgba(255,255,255,0.55)";
+
 
         ctx.fillText(
           "(vagy nem, de a 67 az 67)",
@@ -2008,14 +2497,17 @@
           1220
         );
 
-      } else {
+      }
 
-        // NORMAL
+      else {
+
         ctx.fillStyle =
           "rgba(255,255,255,0.85)";
 
+
         ctx.font =
           "900 58px 'Segoe UI', sans-serif";
+
 
         ctx.fillText(
           "MÉG ENNYI VAN A SULIBÓL",
@@ -2027,8 +2519,10 @@
         ctx.fillStyle =
           "#ffd166";
 
+
         ctx.font =
           "900 340px 'Segoe UI', sans-serif";
+
 
         ctx.fillText(
           daysEl.textContent,
@@ -2040,8 +2534,10 @@
         ctx.fillStyle =
           "#f5f5f5";
 
+
         ctx.font =
           "900 60px 'Segoe UI', sans-serif";
+
 
         ctx.fillText(
           "NAP",
@@ -2053,23 +2549,27 @@
         ctx.font =
           "44px 'Segoe UI', sans-serif";
 
+
         ctx.fillStyle =
           "rgba(255,255,255,0.55)";
+
 
         ctx.fillText(
           "2026/27-es tanév",
           canvas.width / 2,
           1210
         );
+
       }
 
 
-      // Footer a képen
       ctx.font =
         "900 46px 'Segoe UI', sans-serif";
 
+
       ctx.fillStyle =
         "#7fdbff";
+
 
       ctx.fillText(
         "ennyinapasuli.hu",
@@ -2097,17 +2597,19 @@
 
 
       link.click();
+
     }
 
 
     // =====================================================
-    // SAJÁT LOCALSTORAGE NÉZETSZÁMLÁLÓ
+    // LOCALSTORAGE NÉZETSZÁMLÁLÓ
     // =====================================================
 
     document.getElementById(
       "visitCounter"
     ).textContent =
       `👀 Te már ${auraData.visits}. alkalommal nézed ezt az oldalt`;
+
   </script>
 
 </body>
